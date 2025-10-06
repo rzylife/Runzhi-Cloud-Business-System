@@ -1,0 +1,143 @@
+分两次：
+第一次
+-- 用户表
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    points INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_login TIMESTAMP NULL,
+    is_admin TINYINT DEFAULT 0
+);
+
+-- 产品表
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    price_points INT NOT NULL,
+    duration_days INT NOT NULL COMMENT '使用天数',
+    is_active TINYINT DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 订单表
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    points_used INT NOT NULL,
+    status ENUM('pending', 'completed', 'cancelled') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+-- 签到记录表
+CREATE TABLE sign_ins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    sign_date DATE NOT NULL,
+    points_awarded INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_user_date (user_id, sign_date)
+);
+
+-- 优惠码表
+CREATE TABLE discount_codes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(50) UNIQUE NOT NULL,
+    points_value INT NOT NULL,
+    is_used TINYINT DEFAULT 0,
+    used_by INT NULL,
+    used_at TIMESTAMP NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP NULL,
+    FOREIGN KEY (used_by) REFERENCES users(id) ON DELETE SET NULL
+);
+
+-- 公告表
+CREATE TABLE announcements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    content TEXT NOT NULL,
+    is_active TINYINT DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- 下载文件表
+CREATE TABLE download_files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    file_path VARCHAR(500) NOT NULL,
+    file_size VARCHAR(50) NOT NULL,
+    version VARCHAR(50) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    download_count INT DEFAULT 0,
+    is_active TINYINT DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- 主页英雄配置表
+CREATE TABLE homepage_hero (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image_path VARCHAR(500) NOT NULL DEFAULT 'assets/default-hero.jpg',
+    video_path VARCHAR(500) DEFAULT NULL,
+    title VARCHAR(200) NOT NULL DEFAULT '润知云业务系统',
+    subtitle VARCHAR(500) NOT NULL DEFAULT '提供极致体验的企业上云服务，拥有安全有效的解决方案，为您云上旅程保驾护航',
+    button_text VARCHAR(100) NOT NULL DEFAULT '立即体验',
+    button_link VARCHAR(500) NOT NULL DEFAULT '#products',
+    is_active TINYINT DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- 积分日志表
+CREATE TABLE points_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    points_change INT NOT NULL,
+    reason VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- 创建初始管理员账户（用户名: admin, 密码: admin123）
+-- 注意：实际使用时请修改密码
+INSERT INTO users (username, email, password, points, is_admin) 
+VALUES (
+    'admin', 
+    'admin@runzhiyun.com', 
+    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 
+    10000, 
+    1
+);
+
+-- 创建示例产品
+INSERT INTO products (name, description, price_points, duration_days) VALUES
+('基础云电脑', '适合日常办公和轻度娱乐', 100, 30),
+('标准云电脑', '适合开发和中度游戏', 200, 30),
+('高级云电脑', '适合专业设计和重度游戏', 500, 30),
+('企业云电脑', '适合团队协作和企业应用', 1000, 30);
+
+-- 创建示例公告
+INSERT INTO announcements (title, content, is_active) VALUES
+('系统升级通知', '我们将于今晚进行系统维护升级，预计维护时间为2小时。', 1),
+('新功能上线', '新增下载中心功能，用户可以下载客户端和相关文档。', 1),
+('优惠活动', '新用户注册即送100积分，邀请好友最高返现50%。', 1);
+第二次
+-- 如果还没有积分日志表
+CREATE TABLE IF NOT EXISTS points_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    points_change INT NOT NULL,
+    reason VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
