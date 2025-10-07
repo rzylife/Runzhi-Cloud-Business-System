@@ -664,6 +664,16 @@ if ($is_logged_in) {
             .products-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .auth-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn-login, .btn-register {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -684,21 +694,24 @@ if ($is_logged_in) {
             </div>
             <div class="auth-buttons">
                 <?php if ($is_logged_in): ?>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" style="color: #4361ee;">
-                            <i class="fas fa-user me-1"></i>我的账户
+                    <a href="profile.php" class="btn-login">
+                        <i class="fas fa-user me-1"></i>个人中心
+                    </a>
+                    <?php if ($is_admin): ?>
+                        <a href="admin.php" class="btn-register">
+                            <i class="fas fa-cog me-1"></i>管理后台
                         </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="profile.php"><i class="fas fa-user me-2"></i>个人中心</a>
-                            <?php if ($is_admin): ?>
-                                <a class="dropdown-item" href="admin.php"><i class="fas fa-cog me-2"></i>管理后台</a>
-                            <?php endif; ?>
-                            <a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>退出登录</a>
-                        </div>
-                    </div>
+                    <?php endif; ?>
+                    <a href="logout.php" class="btn-register">
+                        <i class="fas fa-sign-out-alt me-1"></i>退出
+                    </a>
                 <?php else: ?>
-                    <a href="login.php" class="btn-login">登录</a>
-                    <a href="register.php" class="btn-register">免费注册</a>
+                    <a href="login.php" class="btn-login">
+                        <i class="fas fa-sign-in-alt me-1"></i>登录
+                    </a>
+                    <a href="register.php" class="btn-register">
+                        <i class="fas fa-user-plus me-1"></i>注册
+                    </a>
                 <?php endif; ?>
             </div>
         </div>
