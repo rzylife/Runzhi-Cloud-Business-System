@@ -89,7 +89,7 @@
 <!-- 提示：引入 Font Awesome（若网站未引入，请保留此行） -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <!-- 授权认证跳转按钮 -->
-<a href="https://sq.rzy.life/" target="_blank" rel="noopener noreferrer"
+<a href="https://zh.rzy.life/sq" target="_blank" rel="noopener noreferrer"
    style="display: inline-flex; align-items: center; text-decoration: none; 
           background: #f8f9fa; color: #495057; padding: 8px 16px; 
           border-radius: 6px; font-size: 14px; font-weight: 500;
