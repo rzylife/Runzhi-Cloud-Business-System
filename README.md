@@ -1,13 +1,14 @@
 # Runzhi-Cloud-Business-System
 
+请勿从上方下载源码，上方为1.0版本，不推荐下载。请从
+
 本业务系统从2.0版本开始需要Nignx 1.21.1
        PHP7.4
        （需要加入sg11）
        Mysql 5.5~8.0
 
-润知云业务系统 V1
-本系统是开源的
-以下是须知
+本系统开源，但高级功能我们拒绝开源。
+
 润知云（RZY）开源业务系统使用与授权声明
 
 一、开源理念与使用原则
@@ -41,11 +42,11 @@
 邮箱：kf@rzy.life
 （我们会尽可能的免费帮助您，让您的云服务蒸蒸日上）
 
-✅ 官方认证服务：如您希望您的站点获得“润知云授权认证”标识（可用于展示合法性与可信度），请入群提交认证申请或发送至客服邮箱（看最后），站点授权信息将同步至官方防伪查询平台：[https://zh.rzy.life/sq]
+✅ 官方认证服务：如您希望您的站点获得“润知云授权认证”标识（可用于展示合法性与可信度），并且使用更多高级功能，请购买在润知云业务系统管理中心购买授权授权[https://rzyidc.rzy.life]购买成功将同步信息至授权中心。
 
 四、版权声明与禁止行为
 
-本系统所有源代码、文档、设计资源、商标标识及衍生作品，其知识产权均归润知云（RZY）及其关联方所有，受《中华人民共和国著作权法》《计算机软件保护条例》《反不正当竞争法》等法律法规保护。
+本系统所有源代码、文档、设计资源、商标标识及衍生作品，其知识产权均归润知云（RunZhiCloud）及其关联方所有，受《中华人民共和国著作权法》《计算机软件保护条例》《反不正当竞争法》等法律法规保护。
 
 任何个人或组织在使用本系统时，必须严格遵守以下禁止性规定：
 
@@ -55,6 +56,7 @@
 4. 不得实施反向工程、反编译、代码提取或大规模自动化爬取**以获取受保护模块；
 5. 不得伪造、冒用“润知云官方”“授权代理”“战略合作”等身份进行宣传、招商或收费；
 6. 不得删除、遮挡或篡改系统中包含的版权信息、防伪标识或官方链接**。
+7. 不得伪造本系统套壳售卖。
  五、责任声明与法律追责
 
 润知云团队对因以下情形导致的任何损失不承担责任：
@@ -77,25 +79,4 @@
 
                                                                                                                      —— 润知云源码部门  
                                                                                                                             [https://rzy.life]
-                                                                                                                              2025 年 10 月  
-
-🪢🔏附件
-【邮件发送】
-发送至：kf@rzy.life
-模板：
-您好，我需要润知云业务系统的官方授权，我的站点名称是：XXX域名是：XXXX.XXXX
-发送完请等待72小时，如已进行授权客服邮箱将会为您发送信件，如没有您可以去Q群催一催
-您可以在页脚插入授权平台的代码：
-<!-- 提示：引入 Font Awesome（若网站未引入，请保留此行） -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- 授权认证跳转按钮 -->
-<a href="https://zh.rzy.life/sq" target="_blank" rel="noopener noreferrer"
-   style="display: inline-flex; align-items: center; text-decoration: none; 
-          background: #f8f9fa; color: #495057; padding: 8px 16px; 
-          border-radius: 6px; font-size: 14px; font-weight: 500;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: all 0.2s ease;"
-   onmouseover="this.style.backgroundColor='#e9ecef'; this.style.color='#0d6efd';"
-   onmouseout="this.style.backgroundColor='#f8f9fa'; this.style.color='#495057';">
-  <i class="fas fa-shield-check" style="margin-right: 8px; color: #28a745;"></i>
-  官方授权认证查询
-</a>
+                                                                                                                              2026 年 3 月 
