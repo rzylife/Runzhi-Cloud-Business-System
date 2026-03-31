@@ -1,6 +1,6 @@
 # Runzhi-Cloud-Business-System
 
-系统需要Nignx 1.21.1
+本业务系统从2.0版本开始需要Nignx 1.21.1
        PHP7.4
        （需要加入sg11）
        Mysql 5.5~8.0
