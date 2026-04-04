@@ -1,6 +1,5 @@
 # Runzhi-Cloud-Business-System
 
-<img width="1024" height="1024" alt="1769662627" src="https://github.com/user-attachments/assets/778f9a24-8fee-4b80-a279-f9e5e372a5a2" />
 <h1>润知云业务系统</h1>
 
 为了保证用户体验，润知云特此开发该系统。
