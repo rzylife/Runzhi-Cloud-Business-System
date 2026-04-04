@@ -13,6 +13,7 @@
        PHP7.4
        （需要加入sg11）
        Mysql 5.5~8.0
+	   TinkPHP伪静态
 </p>
 <h3>请修改config.php的数据库链接部分信息。</h3>
 本系统开源，
@@ -91,13 +92,5 @@
                                                                                                                               
                                                                                                                               
  附件：
-Nignx伪静态：
-location ~* (runtime|application)/{
-	return 403;
-}
-location / {
-	if (!-e $request_filename){
-		rewrite  ^(.*)$  /index.php?s=$1  last;   break;
-	}
-}
-Apeache请自己转换。
+Nignx、Apeache伪静态：
+宝塔面板伪静态管理中选择Tinkphp
