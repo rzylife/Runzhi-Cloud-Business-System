@@ -88,3 +88,16 @@
                                                                                                                      —— 润知云源码部门  
                                                                                                                             [https://rzy.life]
                                                                                                                               2026 年 3 月 
+                                                                                                                              
+                                                                                                                              
+ 附件：
+Nignx伪静态：
+location ~* (runtime|application)/{
+	return 403;
+}
+location / {
+	if (!-e $request_filename){
+		rewrite  ^(.*)$  /index.php?s=$1  last;   break;
+	}
+}
+Apeache请自己转换。
